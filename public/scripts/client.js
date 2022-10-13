@@ -30,9 +30,10 @@ $(document).ready(function () {
   };
 
   const renderTweets = function (tweets) {
+    $tweets.empty();
     tweets.forEach((tweet) => {
       const $tweet = createTweetElement(tweet);
-      $tweets.append($tweet);
+      $tweets.prepend($tweet);
     });
   };
 
@@ -51,9 +52,8 @@ $(document).ready(function () {
     event.preventDefault();
     const $data = $form.serialize();
     $.post("/tweets/", $data)
-      .then((tweet) => {
-        console.log($data);
-        // $tweets.prepend(createTweetElement(tweet));
+      .then(() => {
+        loadtweets();
       })
       .catch((error) => {
         console.log("error", error);
