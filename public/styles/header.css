@@ -2,8 +2,9 @@ body > header {
   background-color: #95eced;
   background-image: url("https://www.transparenttextures.com/patterns/arches.png");
   width: 100%;
-  height: 520px;
-  padding-top: 120px;
+  height: 420px;
+  padding-top: 40px;
+  float: left;
 }
 
 .avatar {
@@ -14,4 +15,5 @@ body > header {
 
 .name {
   text-align: center;
+  color: white;
 }
