@@ -50,13 +50,24 @@ $(document).ready(function () {
   const $form = $("form");
   $form.submit(function (event) {
     event.preventDefault();
-    const $data = $form.serialize();
-    $.post("/tweets/", $data)
-      .then(() => {
-        loadtweets();
-      })
-      .catch((error) => {
-        console.log("error", error);
-      });
+
+    const $counter = $(this).find(".counter");
+    const $count = $counter.val();
+    if ($count === "140") {
+      alert("Please type something");
+    } else if ($count < 0) {
+      alert("Exceed word limits!");
+    } else {
+      const $data = $form.serialize();
+      $.post("/tweets/", $data)
+        .then(() => {
+          //remove text from text area and reload page
+          $("#tweet-text").val("");
+          loadtweets();
+        })
+        .catch((error) => {
+          console.log("error", error);
+        });
+    }
   });
 });
