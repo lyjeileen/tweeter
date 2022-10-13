@@ -59,11 +59,18 @@ $(document).ready(function () {
 
     const $counter = $(this).find(".counter");
     const $count = $counter.val();
+    const $error = $(this).find("#error");
+    const $errorMessage = $("#errorMessage");
     if ($count === "140") {
-      alert("Please type something");
+      $errorMessage.val("");
+      $errorMessage.text("Error: Please type something.");
+      $error.slideDown("slow");
     } else if ($count < 0) {
-      alert("Exceed word limits!");
+      $errorMessage.val("");
+      $errorMessage.text("Error: Exceed word limits!");
+      $error.slideDown("slow");
     } else {
+      $error.css("display", "none");
       const $data = $form.serialize();
       $.post("/tweets/", $data)
         .then(() => {
