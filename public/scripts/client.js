@@ -76,6 +76,7 @@ $(document).ready(function () {
         .then(() => {
           //remove text from text area and reload page
           $("#tweet-text").val("");
+          $counter.text(140);
           loadtweets();
         })
         .catch((error) => {
